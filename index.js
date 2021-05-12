@@ -8,6 +8,7 @@ import figlet from "figlet";
 const config = JSON.parse(fs.readFileSync("./input/baseConfig.json"));
 const { logger } = utils;
 const isInteractive = process.argv[2] === "wizard";
+const platformIsSupported = ["darwin", "linux"].includes(process.platform);
 
 const main = async (result = {}) => {
   const options = { ...utils.getOptionsUsingConfig(config), ...result };
@@ -64,6 +65,11 @@ const main = async (result = {}) => {
 
   logger(`For it is done.\n`, "✅");
 };
+
+if (!platformIsSupported) {
+  console.error(`Platform ${process.platform} is not supported. Exiting now...`);
+  process.exit(1);
+}
 
 console.log(
   figlet.textSync("Lisk Easy Genesis", {

@@ -8,8 +8,11 @@
     "url": "git+https://github.com/lemii/lisk-easy-genesis.git"
   },
   "main": "index.js",
+  "engines": {
+    "node": ">=12.20.0 <=12",
+    "npm": ">=6.12.0"
+  },
   "dependencies": {
-    "args": "^5.0.1",
     "figlet": "^1.5.0",
     "lisk-sdk": "^5.0.5",
     "prompt": "^1.1.0"
