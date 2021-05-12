@@ -1,0 +1,53 @@
+{
+  "version": "2.1.0",
+  "networkVersion": "1.1",
+  "label": "devnet",
+  "rpc": {
+    "enable": false,
+    "mode": "ipc",
+    "port": 8080
+  },
+  "genesisConfig": {
+    "blockTime": 10,
+    "communityIdentifier": "My Cool Sidechain",
+    "maxPayloadLength": 15360,
+    "bftThreshold": 68,
+    "minFeePerByte": 1000,
+    "baseFees": [
+      {
+        "moduleID": 5,
+        "assetID": 0,
+        "baseFee": "1000000000"
+      }
+    ],
+    "rewards": {
+      "milestones": ["500000000", "400000000", "300000000", "200000000", "100000000"],
+      "offset": 2160,
+      "distance": 3000000
+    },
+    "minRemainingBalance": "5000000",
+    "activeDelegates": 21,
+    "standbyDelegates": 2,
+    "delegateListRoundOffset": 2
+  },
+  "logger": {
+    "fileLogLevel": "debug",
+    "consoleLogLevel": "info"
+  },
+  "network": {
+    "port": 5000,
+    "seedPeers": [
+      {
+        "ip": "127.0.0.1",
+        "port": 5000
+      }
+    ]
+  },
+  "forging": {
+    "force": true,
+    "waitThreshold": 2,
+    "delegates": [],
+    "defaultPassword": "elephant tree paris dragon chair galaxy"
+  },
+  "plugins": {}
+}
