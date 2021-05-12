@@ -6,13 +6,19 @@ Lisk Easy Genesis (L.E.G.) is a simple tool that allows you to create a Lisk SDK
 
 ### Table of Contents
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Option 1: Interactive Wizard](#option-1-interactive-wizard)
   - [Option 2: Using the Config File](#option-2-using-the-config-file)
-  - [Account Schemas](#account-schemas)
+  - [Account Schemas (optional)](#account-schemas-optional)
 - [Credits](#credits)
 - [License](#license)
+
+## Requirements
+
+- Node: version >=12.20.0 <=12
+- OS: Linux or Mac
 
 ## Installation
 
@@ -34,9 +40,9 @@ If you have little experience, your sidechain is very basic, or if you simply wa
 2. Go through all the prompts
 3. Done! ✔️
 
-The output JSON files can be found in the `output` folder
+The generated genesis block, configuration and credentials will be saved as JSON files in the `output` folder.
 
-Defaults are provided for technical matters, meaning that you can leave certain prompts empty if you don't know what to answer with.
+FYI: Defaults are provided for technical matters, meaning that you can leave certain prompts empty if you don't know what to answer with.
 
 The remainder of the settings are taken from the `baseConfig.json` found in the `input` folder.
 
@@ -44,17 +50,17 @@ The remainder of the settings are taken from the `baseConfig.json` found in the 
 
 If you have more experience and know what you are doing, you can go ahead and edit the `baseConfig.js` file directly. This allows you to customize the genesis block and configuration in a more in depth manner. It will skip the prompts altogether.
 
-1. Edit the `baseConfig.js` file to your liking, or replace it with your own (excluding the `forging.delegates` field)
+1. Edit the `baseConfig.js` file to your liking, or replace it with your own (the `forging.delegates` field will be overwritten in the output)
 2. Run the tool with `npm start`
 3. Done! ✔️
 
-The output JSON files can be found in the `output` folder
+The generated genesis block, configuration and credentials will be saved as JSON files in the `output` folder.
 
-### Account Schemas
+### Account Schemas (optional)
 
-If your sidechain contains custom modules that modify the properties of an `account`, these must be included in the genesis block.
+If your sidechain contains custom modules that modify the properties of an `account`, these must be included in the genesis block. If you are running a vanilla chain (no extra modules aside from the default ones), you can skip this step.
 
-To do this, simply add the account schema for each module to the `schemas.js` file in the `input` folder. The variable name of the schema must match the module name. Don't forgot to `export` it!
+To do this, simply add the account schema for each module to the `schemas.js` file in the `input` folder. You can find the schema in the module with the property name `accountSchema`. The variable name of the schema must match the module name. Don't forgot to `export` it!
 
 Example:
 
@@ -76,7 +82,7 @@ export const myCustomModule = {
 };
 ```
 
-The tool will then include all exported schemas in the genesis block.
+The tool will then include all schemas defined in the `schemas.js` file in the genesis block.
 
 ## Credits
 
